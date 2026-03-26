@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '' \"s/import { Id } from ''\\\\.\\\\.\\\\/\\\\.\\\\.\\\\/convex\\\\/_generated\\\\/dataModel''/import type { Id } from ''..\\\\/..\\\\/convex\\\\/_generated\\\\/dataModel''/g\" /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/components/CheckinForm.tsx /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/pages/Dashboard.tsx /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/pages/Tasks.tsx)",
+      "Bash(sed -i '' \"s/import { Doc } from ''\\\\.\\\\.\\\\/\\\\.\\\\.\\\\/convex\\\\/_generated\\\\/dataModel''/import type { Doc } from ''..\\\\/..\\\\/convex\\\\/_generated\\\\/dataModel''/g\" /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/components/ProjectCard.tsx /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/components/TaskItem.tsx /Users/mbaye/Desktop/Personal/Productivity/productivity-dashboard/src/components/GoalBar.tsx)"
+    ]
+  }
+}
