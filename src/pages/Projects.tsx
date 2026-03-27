@@ -3,6 +3,7 @@ import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import ProjectCard from '../components/ProjectCard'
 import TaskItem from '../components/TaskItem'
+import ProjectNotes from '../components/ProjectNotes'
 import { Plus, X } from 'lucide-react'
 
 const ROLES = ['IT Committee', 'Student Gov', 'JDAS', 'AASTIC', 'Personal', 'Academic', 'Career']
@@ -56,14 +57,19 @@ export default function Projects() {
               onClick={() => setExpanded(expanded === p._id ? null : p._id)}
             />
             {expanded === p._id && (
-              <div className="mt-2 bg-white rounded-xl border border-gray-200 p-4 space-y-2">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Tasks</p>
-                {tasks.filter((t) => t.projectId === p._id).map((t) => (
-                  <TaskItem key={t._id} task={t} />
-                ))}
-                {tasks.filter((t) => t.projectId === p._id).length === 0 && (
-                  <p className="text-sm text-gray-400">No tasks yet</p>
-                )}
+              <div className="mt-2 bg-white rounded-xl border border-gray-200 p-4 space-y-4">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Tasks</p>
+                  {tasks.filter((t) => t.projectId === p._id).map((t) => (
+                    <TaskItem key={t._id} task={t} />
+                  ))}
+                  {tasks.filter((t) => t.projectId === p._id).length === 0 && (
+                    <p className="text-sm text-gray-400">No tasks yet</p>
+                  )}
+                </div>
+                <div className="border-t border-gray-100 pt-3">
+                  <ProjectNotes projectId={p._id} />
+                </div>
               </div>
             )}
           </div>

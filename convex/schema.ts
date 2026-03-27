@@ -54,6 +54,14 @@ export default defineSchema({
     createdAt: v.number(),
   }),
 
+  projectNotes: defineTable({
+    projectId: v.id("projects"),
+    content: v.string(),
+    date: v.string(),        // "YYYY-MM-DD" for day-based queries
+    createdAt: v.number(),
+  }).index("by_project", ["projectId"])
+    .index("by_date", ["date"]),
+
   timelogs: defineTable({
     projectId: v.id("projects"),
     taskId: v.optional(v.id("tasks")),
