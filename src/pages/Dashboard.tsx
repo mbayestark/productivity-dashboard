@@ -3,7 +3,7 @@ import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import StatCard from '../components/StatCard'
 import TaskItem from '../components/TaskItem'
-import { Clock, Plus, X } from 'lucide-react'
+import { Clock, X } from 'lucide-react'
 import type { Id } from '../../convex/_generated/dataModel'
 
 export default function Dashboard() {

@@ -3,7 +3,6 @@ import { query } from "./_generated/server";
 export const getDashboardStats = query({
   args: {},
   handler: async (ctx) => {
-    const now = Date.now();
     const today = new Date().toISOString().split("T")[0];
 
     // Start of current week (Monday)
