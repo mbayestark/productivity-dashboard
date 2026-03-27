@@ -10,6 +10,7 @@
 
 import type * as checkins from "../checkins.js";
 import type * as goals from "../goals.js";
+import type * as projectNotes from "../projectNotes.js";
 import type * as projects from "../projects.js";
 import type * as seed from "../seed.js";
 import type * as stats from "../stats.js";
@@ -25,6 +26,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   checkins: typeof checkins;
   goals: typeof goals;
+  projectNotes: typeof projectNotes;
   projects: typeof projects;
   seed: typeof seed;
   stats: typeof stats;
