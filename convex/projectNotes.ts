@@ -40,6 +40,16 @@ export const addNote = mutation({
   },
 });
 
+export const listAll = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db
+      .query("projectNotes")
+      .order("desc")
+      .take(200);
+  },
+});
+
 export const deleteNote = mutation({
   args: { id: v.id("projectNotes") },
   handler: async (ctx, { id }) => {

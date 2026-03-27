@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import {
-  LayoutDashboard, FolderKanban, CheckSquare, Target, CalendarCheck, BarChart2, X
+  LayoutDashboard, FolderKanban, CheckSquare, Target, CalendarCheck, BarChart2, StickyNote, X
 } from 'lucide-react'
 
 const links = [
@@ -9,6 +9,7 @@ const links = [
   { to: '/tasks',     label: 'Tasks',     icon: CheckSquare },
   { to: '/goals',     label: 'Goals',     icon: Target },
   { to: '/checkins',  label: 'Check-ins', icon: CalendarCheck },
+  { to: '/notes',     label: 'Notes',     icon: StickyNote },
   { to: '/stats',     label: 'Stats',     icon: BarChart2 },
 ]
 

@@ -8,6 +8,7 @@ import Tasks from './pages/Tasks'
 import Goals from './pages/Goals'
 import Checkins from './pages/Checkins'
 import Stats from './pages/Stats'
+import Notes from './pages/Notes'
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -46,6 +47,7 @@ export default function App() {
               <Route path="/goals" element={<Goals />} />
               <Route path="/checkins" element={<Checkins />} />
               <Route path="/stats" element={<Stats />} />
+              <Route path="/notes" element={<Notes />} />
             </Routes>
           </div>
         </main>
