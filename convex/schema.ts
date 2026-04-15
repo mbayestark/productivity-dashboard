@@ -71,4 +71,29 @@ export default defineSchema({
     createdAt: v.number(),
   }),
 
+  cubesat_subsystems: defineTable({
+    name: v.string(),
+    progress: v.number(),
+    status: v.string(),
+    notes: v.optional(v.string()),
+    updatedAt: v.number(),
+  }),
+
+  cubesat_log: defineTable({
+    date: v.string(),
+    type: v.string(),
+    subsystem: v.optional(v.string()),
+    title: v.string(),
+    body: v.optional(v.string()),
+    author: v.optional(v.string()),
+  }),
+
+  cubesat_milestones: defineTable({
+    title: v.string(),
+    targetDate: v.string(),
+    completedDate: v.optional(v.string()),
+    status: v.string(),
+    description: v.optional(v.string()),
+  }),
+
 });

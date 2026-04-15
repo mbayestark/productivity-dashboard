@@ -9,6 +9,7 @@ import Goals from './pages/Goals'
 import Checkins from './pages/Checkins'
 import Stats from './pages/Stats'
 import Notes from './pages/Notes'
+import CubeSatDashboard from './pages/CubeSatDashboard'
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -48,6 +49,7 @@ export default function App() {
               <Route path="/checkins" element={<Checkins />} />
               <Route path="/stats" element={<Stats />} />
               <Route path="/notes" element={<Notes />} />
+              <Route path="/projects/cubesat" element={<CubeSatDashboard />} />
             </Routes>
           </div>
         </main>

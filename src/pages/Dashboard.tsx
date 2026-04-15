@@ -3,7 +3,8 @@ import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import StatCard from '../components/StatCard'
 import TaskItem from '../components/TaskItem'
-import { Clock, X } from 'lucide-react'
+import { Clock, X, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import type { Id } from '../../convex/_generated/dataModel'
 
 export default function Dashboard() {
@@ -11,6 +12,9 @@ export default function Dashboard() {
   const projects = useQuery(api.projects.listProjects)
   const tasks    = useQuery(api.tasks.listTasks, {})
   const checkins = useQuery(api.checkins.listCheckins, { limit: 3 })
+
+  const cubesatProgress = useQuery(api.cubesat.getOverallProgress)
+  const cubesatSubsystems = useQuery(api.cubesat.getSubsystems)
 
   const [showTimeLog, setShowTimeLog] = useState(false)
   const [tlProject, setTlProject] = useState('')
@@ -103,6 +107,47 @@ export default function Dashboard() {
             {(checkins ?? []).length === 0 && <p className="text-gray-400 text-sm">No check-ins yet</p>}
           </div>
         </div>
+      </div>
+
+      {/* CubeSat Project Card */}
+      <div className="bg-white rounded-xl border border-gray-200 p-5">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-semibold text-gray-900">SAT-3U-001 — CubeSat Prototype</h3>
+          <Link
+            to="/projects/cubesat"
+            className="flex items-center gap-1 text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+          >
+            View Project <ArrowRight size={14} />
+          </Link>
+        </div>
+        <div className="flex items-center gap-4 mb-4">
+          <div className="text-2xl font-bold text-gray-900">{cubesatProgress ?? 0}%</div>
+          <div className="flex-1">
+            <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-indigo-500 rounded-full transition-all"
+                style={{ width: `${cubesatProgress ?? 0}%` }}
+              />
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Overall progress</p>
+          </div>
+        </div>
+        {cubesatSubsystems && cubesatSubsystems.length > 0 && (
+          <div className="flex gap-2 flex-wrap">
+            {cubesatSubsystems.map((s) => {
+              const color = s.status === 'complete' ? 'bg-green-500'
+                : s.status === 'in_progress' ? 'bg-indigo-500'
+                : s.status === 'blocked' ? 'bg-yellow-500'
+                : 'bg-gray-300'
+              return (
+                <div key={s._id} className="flex items-center gap-1.5" title={`${s.name}: ${s.progress}%`}>
+                  <div className={`w-2.5 h-2.5 rounded-full ${color}`} />
+                  <span className="text-xs text-gray-500">{s.name.split(' ')[0]}</span>
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
 
       {/* Today's tasks */}
